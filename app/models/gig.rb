@@ -5,6 +5,7 @@ class Gig < ApplicationRecord
     before_save :create_gig_payment
 
     scope :like, ->(key, argument){ where("#{key} ILIKE ?", "%#{argument}%") }
+    scope :current_state, ->(argument){ where(state: argument) }
 
     def payment_complete
        self.state = 'paid'
