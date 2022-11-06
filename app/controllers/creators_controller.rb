@@ -1,7 +1,6 @@
 class CreatorsController < ApplicationController
   before_action :set_creator, only: [:show]
 
-  # GET /creators
   def index
 
     if params[:sort] && params[:sort_direction] || params[:limit] || params[:offset]
@@ -9,19 +8,19 @@ class CreatorsController < ApplicationController
     else
       @creators = Creator.all
     end
-
-    render json: @creators
+    
+    render_response( CreatorSerializer,  @creators, 'Creators fetched successfully', 200, 'Success')
   end
 
   def show
-    render json: @creator
+    render_response( CreatorSerializer,  @creator, 'Creator fetched successfully', 200, 'Success')
   end
 
   def create
     @creator = Creator.new(creator_params)
 
     if @creator.save
-      render json: @creator.except, status: :created, location: @creator
+      render_response( CreatorSerializer,  @creator, 'Creators saved successfully', 200, 'Success')
     else
       render json: @creator.errors, status: :unprocessable_entity
     end
