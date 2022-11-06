@@ -3,9 +3,9 @@
 one:
   brand_name: MyString
   state: 1
-  creator: 
+  creator: one
 
 two:
   brand_name: MyString
   state: 1
-  creator: 
+  creator: two

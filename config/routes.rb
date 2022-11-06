@@ -1,3 +1,4 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :creators , except: [:update, :destroy]
+  resources :gigs, except: [:destroy]
 end

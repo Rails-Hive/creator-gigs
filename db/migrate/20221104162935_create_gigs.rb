@@ -3,7 +3,7 @@ class CreateGigs < ActiveRecord::Migration[6.1]
     create_table :gigs do |t|
       t.string :brand_name
       t.integer :state, default: 0
-      t.references :creator, foreign_key: true
+      t.references :creator, null: false, foreign_key: true
 
       t.timestamps
     end
