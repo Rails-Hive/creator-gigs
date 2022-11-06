@@ -8,18 +8,20 @@ class GigsController < ApplicationController
     else
      @gigs = Gig.all
     end
-
+    
+    render_response( GigSerializer, @gigs, 'Gigs list fetched successfully', 200, 'Success')
   end
 
   def show
-    @relationship = params[:relationship]
+    class_name = params[:relationship].present? ? GigWithPaymentSerializer : GigSerializer
+    render_response( class_name, @gig, 'Gig fetched successfully', 200, 'Success')
   end
 
   def create
     @gig = Gig.new(gig_params)
 
     if @gig.save
-      render json: @gig, status: :created, location: @gig
+      render_response( class_name, @gig, 'Gig saved successfully', 200, 'Created')
     else
       render json: @gig.errors, status: :unprocessable_entity
     end
@@ -27,7 +29,7 @@ class GigsController < ApplicationController
 
   def update
     if @gig.update(gig_params)
-      render json: @gig
+      render_response( GigSerializer, @gig, 'Gig updated successfully', 200, 'Success')
     else
       render json: @gig.errors, status: :unprocessable_entity
     end
