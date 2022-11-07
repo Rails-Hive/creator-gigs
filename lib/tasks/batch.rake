@@ -3,8 +3,7 @@ namespace :batch do
   task gig_payment_complete: :environment do
     @gig_payments = GigPayment.current_state("pending")
       @gig_payments.each do |payment|
-        payment.state = "complete"
-        payment.save!
+        payment.completed
       end
   end
 
