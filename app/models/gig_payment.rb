@@ -1,11 +1,13 @@
 class GigPayment < ApplicationRecord
     belongs_to :gig
-    enum state: { pending: 0, complete: 1}
-    before_save :change_gig_state
+    enum state: { pending: 0, complete: 1} do
+        event :completed do
+            transition :pending => :complete
+            after do
+                self.gig.pay
+            end
+        end
+    end
 
     scope :current_state, ->(argument){ where(state: argument) }
-
-    def change_gig_state
-       self.gig.payment_complete if self.state_changed? && self.state == 'complete' 
-    end
 end
