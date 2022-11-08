@@ -1,4 +1,5 @@
 class CreatorsController < ApplicationController
+  before_action :authorize_request
   before_action :set_creator, only: [:show]
 
   def index
@@ -30,6 +31,8 @@ class CreatorsController < ApplicationController
 
     def set_creator
       @creator = Creator.find(params[:id])
+      rescue ActiveRecord::RecordNotFound
+      render json: { errors: 'Creator not found' }, status: :not_found
     end
 
     def creator_params
