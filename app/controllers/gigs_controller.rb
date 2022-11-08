@@ -1,4 +1,5 @@
 class GigsController < ApplicationController
+  before_action :authorize_request
   before_action :set_gig, only: [:show, :update]
 
   def index
@@ -39,6 +40,8 @@ class GigsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_gig
       @gig = Gig.find(params[:id])
+      rescue ActiveRecord::RecordNotFound
+      render json: { errors: 'Gig not found' }, status: :not_found
     end
 
     # Only allow a list of trusted parameters through.

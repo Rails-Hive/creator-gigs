@@ -13,6 +13,9 @@ gem 'whenever', '~> 1.0', require: false
 gem 'active_model_serializers', '~> 0.10.13'
 gem 'stateful_enum', '~> 0.7.0'
 
+gem 'jwt', '~> 2.5'
+gem 'bcrypt', '~> 3.1', '>= 3.1.18'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'faker', '~> 3.0'
