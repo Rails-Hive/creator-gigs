@@ -87,9 +87,9 @@ CCDLFLAGS = -fno-common
 CFLAGS   = $(CCDLFLAGS) $(cflags) -fno-common -pipe $(ARCH_FLAG)
 INCFLAGS = -I. -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward -I$(hdrdir) -I$(srcdir)
 DEFS     = 
-CPPFLAGS = -DRUBY_EXTCONF_H=\"$(RUBY_EXTCONF_H)\" -I/opt/homebrew/include -I/Users/eugenewilkins/.rbenv/versions/3.0.3/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT $(DEFS) $(cppflags)
+CPPFLAGS = -DRUBY_EXTCONF_H=\"$(RUBY_EXTCONF_H)\" -I/opt/homebrew/include/postgresql@14 -I/Users/eugenewilkins/.rbenv/versions/3.0.3/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT $(DEFS) $(cppflags)
 CXXFLAGS = $(CCDLFLAGS)  $(ARCH_FLAG)
-ldflags  = -L. -L/Users/eugenewilkins/.rbenv/versions/3.0.3/lib  -fstack-protector-strong -Wl,-rpath,/opt/homebrew/lib
+ldflags  = -L. -L/Users/eugenewilkins/.rbenv/versions/3.0.3/lib  -fstack-protector-strong -Wl,-rpath,/opt/homebrew/lib/postgresql@14
 dldflags = -L/Users/eugenewilkins/.rbenv/versions/3.0.3/lib  -Wl,-undefined,dynamic_lookup -Wl,-multiply_defined,suppress 
 ARCH_FLAG = -m64
 DLDFLAGS = $(ldflags) $(dldflags) $(ARCH_FLAG)
@@ -125,8 +125,8 @@ TOUCH = exit >
 #### End of system configuration section. ####
 
 preload = 
-libpath = . $(libdir) /opt/homebrew/lib
-LIBPATH =  -L. -L$(libdir) -L/opt/homebrew/lib
+libpath = . $(libdir) /opt/homebrew/lib/postgresql@14
+LIBPATH =  -L. -L$(libdir) -L/opt/homebrew/lib/postgresql@14
 DEFFILE = 
 
 CLEANFILES = mkmf.log

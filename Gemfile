@@ -15,6 +15,8 @@ gem 'stateful_enum', '~> 0.7.0'
 
 gem 'jwt', '~> 2.5'
 gem 'bcrypt', '~> 3.1', '>= 3.1.18'
+gem 'dotenv-rails', '~> 2.8', '>= 2.8.1'
+gem 'redis'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
