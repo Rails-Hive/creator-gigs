@@ -1,0 +1,15 @@
+current directory: /Users/eugenewilkins/RailsHive/creator-gigs/vendor/bundle/ruby/3.0.0/gems/bootsnap-1.13.0/ext/bootsnap
+/Users/eugenewilkins/.rbenv/versions/3.0.3/bin/ruby -I /Users/eugenewilkins/.rbenv/versions/3.0.3/lib/ruby/site_ruby/3.0.0 extconf.rb
+creating Makefile
+
+current directory: /Users/eugenewilkins/RailsHive/creator-gigs/vendor/bundle/ruby/3.0.0/gems/bootsnap-1.13.0/ext/bootsnap
+make DESTDIR\= sitearchdir\=./.gem.20221109-90539-2z51pt sitelibdir\=./.gem.20221109-90539-2z51pt clean
+
+current directory: /Users/eugenewilkins/RailsHive/creator-gigs/vendor/bundle/ruby/3.0.0/gems/bootsnap-1.13.0/ext/bootsnap
+make DESTDIR\= sitearchdir\=./.gem.20221109-90539-2z51pt sitelibdir\=./.gem.20221109-90539-2z51pt
+compiling bootsnap.c
+linking shared-object bootsnap/bootsnap.bundle
+
+current directory: /Users/eugenewilkins/RailsHive/creator-gigs/vendor/bundle/ruby/3.0.0/gems/bootsnap-1.13.0/ext/bootsnap
+make DESTDIR\= sitearchdir\=./.gem.20221109-90539-2z51pt sitelibdir\=./.gem.20221109-90539-2z51pt install
+/usr/bin/install -c -m 0755 bootsnap.bundle ./.gem.20221109-90539-2z51pt/bootsnap
