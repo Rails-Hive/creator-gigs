@@ -22,9 +22,9 @@ class GigsController < ApplicationController
     @gig = Gig.new(gig_params)
 
     if @gig.save
-      render_response( class_name, @gig, 'Gig saved successfully', 200, 'Created')
+      render_response( GigSerializer, @gig, 'Gig saved successfully', 200, 'Created')
     else
-      render json: @gig.errors, status: :unprocessable_entity
+      render json: ErrorSerializer.new(@gig.errors), status: :unprocessable_entity
     end
   end
 
@@ -32,20 +32,16 @@ class GigsController < ApplicationController
     if @gig.update(gig_params)
       render_response( GigSerializer, @gig, 'Gig updated successfully', 200, 'Success')
     else
-      render json: @gig.errors, status: :unprocessable_entity
+      render json: ErrorSerializer.new(@gig.errors), status: :unprocessable_entity
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_gig
       @gig = Gig.find(params[:id])
-      rescue ActiveRecord::RecordNotFound
-      render json: { errors: 'Gig not found' }, status: :not_found
     end
 
-    # Only allow a list of trusted parameters through.
     def gig_params
-      params.require(:gig).permit(:brand_name, :state, :creator_id)
+      params.permit(:brand_name, :state, :creator_id)
     end
 end
