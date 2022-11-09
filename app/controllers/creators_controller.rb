@@ -18,12 +18,13 @@ class CreatorsController < ApplicationController
   end
 
   def create
+    # process_operation!(Creator::Operation::Create)
     @creator = Creator.new(creator_params)
 
     if @creator.save
       render_response( CreatorSerializer,  @creator, 'Creators saved successfully', 200, 'Success')
     else
-      render json: @creator.errors, status: :unprocessable_entity
+      render json: ErrorSerializer.new(@creator.errors), status: :unprocessable_entity
     end
   end
 
@@ -31,11 +32,12 @@ class CreatorsController < ApplicationController
 
     def set_creator
       @creator = Creator.find(params[:id])
-      rescue ActiveRecord::RecordNotFound
-      render json: { errors: 'Creator not found' }, status: :not_found
+    rescue ActiveRecord::RecordNotFound
+      e = Errors::NotFound.new
+      render json: ErrorSerializer.new(e), status: e.status
     end
 
     def creator_params
-      params.require(:creator).permit(:first_name, :last_name)
+      params.permit(:first_name, :last_name)
     end
 end

@@ -1,5 +1,6 @@
 class Creator < ApplicationRecord
     has_many :gigs
+    validates :first_name, :last_name, presence: true
 
     default_scope -> { select(:id, :first_name, :last_name) } 
     scope :like, ->(argument){ where("first_name ILIKE ? or last_name ILIKE ?", "%#{argument}%", "%#{argument}%") }
