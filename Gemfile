@@ -23,6 +23,8 @@ group :development, :test do
   gem 'faker', '~> 3.0'
   gem "rspec-rails"
   gem "factory_bot_rails"
+  gem 'database_cleaner'
+  gem "awesome_print", require:"ap"
 end
 
 group :development do

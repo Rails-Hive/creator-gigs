@@ -1,6 +1,6 @@
 class CustomRateLimit
     TIME_PERIOD = 60 # no. of seconds
-    LIMIT = 2 # no. of allowed requests per IP for
+    LIMIT = 20 # no. of allowed requests per IP for
   
     def initialize(app)
       @app = app
